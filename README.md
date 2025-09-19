@@ -1,3 +1,5 @@
+Node version required >= 20
+
 ## TECH STACK
 #### Frontend
 
