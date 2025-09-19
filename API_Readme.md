@@ -1,5 +1,29 @@
-MOCK DATA server/src/data.ts
+## TECH STACK
+#### Frontend
 
+`Framework: React`
+
+`Language: TypeScript`
+
+`Bundler / Build Tool: Vite`
+
+`UI Library: Material-UI (MUI)`
+
+`Testing: Vitest`
+
+#### Backend
+
+`Runtime: Node.js`
+
+`Framework: Express.js`
+
+`Language: TypeScript`
+
+## MOCK DATA
+
+File: `server/src/data.ts`
+
+```ts
 export type Profile = {
   id: string
   name: string
@@ -17,19 +41,20 @@ export const profiles: Profile[] = [
   { id: '5', name: 'Lulu', age: 25, bio: 'Biker', photoUrl: 'https://randomuser.me/api/portraits/women/47.jpg', status: 'unseen' },
   { id: '6', name: 'Giovanna', age: 30, bio: 'Wizard', photoUrl: 'https://randomuser.me/api/portraits/women/57.jpg', status: 'unseen' },
 ]
+```
 
+## REST API in Node.js and Express.js
 
-REST API in Node.js and Express.js
-
-FETCH MOCK PROFILES
-
+#### FETCH MOCK PROFILES `GET /profiles`
+```ts
 app.get("/profiles", (_req: Request, res: Response) => {
   const unseenProfiles = profiles.filter(p => p.status === 'unseen')
   res.json(unseenProfiles)
 })
+```
 
-SWIPE LOGIC
-
+#### SWIPE LOGIC `POST /swipe/:id`
+```ts
 app.post("/swipe/:id", (req: Request, res: Response) => {
   const { id } = req.params
   const { action } = req.body as { action: 'like' | 'dislike' }
@@ -40,3 +65,4 @@ app.post("/swipe/:id", (req: Request, res: Response) => {
   profile.status = action === 'like' ? 'liked' : 'disliked'
   res.json({ message: `Profile ${action}d successfully`, profile })
 })
+```
