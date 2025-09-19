@@ -32,7 +32,7 @@ export default function SwipeDeck({ profiles }: SwipeDeckProps) {
       try {
         const res = await fetch(`${url}${path}`, options);
         if (!res.ok) throw new Error(`Failed fetch from ${url}`);
-        return res; // success
+        return res; 
       } catch (err) {
         lastError = err;
       }
